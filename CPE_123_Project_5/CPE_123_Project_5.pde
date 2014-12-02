@@ -6,10 +6,13 @@ Player player1;
 boolean gameStart = false;
 boolean keyD = false, keyA = false;
 
+
+
 void setup()
 {
   size(1200, 700);
   startGame();
+
 }
 
 void draw()
@@ -91,7 +94,7 @@ void movePlayer1()
 void showLives()
 {
   for(int i=0; i<=player1.lives; i++){
-    drawPlayer(width-50*i, 20, 2);
+    drawPlayer(width-50*i, 20, .1);
   }
 }
 

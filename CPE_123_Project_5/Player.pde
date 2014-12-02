@@ -14,12 +14,12 @@ class Player
     this.y = height-20;
     this.lives = 3;
     this.timeLastShot = 0;
-    this.coolDown = 200;
+    this.coolDown = 100;
   }
   
   void display()
   {
-    drawPlayer(this.x-15,this.y-15,2);
+    drawPlayer(this.x-20,this.y-25,.1);
   }
   
   void shoot()
