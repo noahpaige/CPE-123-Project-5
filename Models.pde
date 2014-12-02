@@ -1,0 +1,120 @@
+void drawAlien(float x, float y, float s)
+{
+  pushMatrix();
+    translate(x, y);
+    scale(s);
+
+    fill(255);
+    noStroke();
+    rect(0,4,1,3);
+    rect(1,3,1,2);
+    rect(2,0,1,1);
+    rect(2,2,1,5);
+    rect(3,1,1,2);
+    rect(3,4,1,2);
+    rect(3,7,1,1);
+    rect(4,2,1,4);
+    rect(4,7,1,1);
+    rect(5,2,1,4);
+    rect(6,2,1,4);
+    rect(6,7,1,1);
+    rect(7,1,1,2);
+    rect(7,4,1,2);
+    rect(7,7,1,1);
+    rect(8,0,1,1);
+    rect(8,2,1,5);
+    rect(9,3,1,2);
+    rect(10,4,1,3);
+  popMatrix();
+}
+
+
+void drawPlayer(float x, float y, float s)
+{
+  pushMatrix();
+    translate(x,y);
+    scale(s);
+    
+    fill(0,255,0);
+    stroke(0,255,0);
+    rect(0,4,1,4);
+    rect(1,3,13,5);
+    rect(6,1,3,2);
+    rect(7,0,1,1);
+    rect(14,4,1,4);
+  popMatrix();
+}
+
+void drawPressStart(float x, float y, float s)
+{
+  pushMatrix();
+    translate(x,y);
+    scale(s);
+    fill(255);
+    noStroke();
+    //P
+    rect(0,0,1,7);
+    rect(0,0,4,1);
+    rect(4,1,1,2);
+    rect(0,3,4,1);
+    //R
+    rect(6,0,1,7);
+    rect(6,0,4,1);
+    rect(10,1,1,2);
+    rect(6,3,4,1);
+    rect(8,4,1,1);
+    rect(9,5,1,1);
+    rect(10,6,1,1);
+    //E
+    rect(12,0,1,7);
+    rect(12,0,5,1);
+    rect(12,6,5,1);
+    rect(12,3,4,1);
+    //S
+    rect(18,1,1,2);
+    rect(18,5,1,1);
+    rect(19,0,3,1);
+    rect(19,3,3,1);
+    rect(19,6,3,1);
+    rect(22,1,1,1);
+    rect(22,4,1,2);
+    //S
+    rect(24,1,1,2);
+    rect(24,5,1,1);
+    rect(25,0,3,1);
+    rect(25,3,3,1);
+    rect(25,6,3,1);
+    rect(28,1,1,1);
+    rect(28,4,1,2);
+    
+    //S
+    rect(33,1,1,2);
+    rect(33,5,1,1);
+    rect(34,0,3,1);
+    rect(34,3,3,1);
+    rect(34,6,3,1);
+    rect(37,1,1,1);
+    rect(37,4,1,2);
+    //T
+    rect(39,0,5,1);
+    rect(41,0,1,7);
+    //A
+    rect(45,2,1,5);
+    rect(46,1,1,1);
+    rect(47,0,1,1);
+    rect(48,1,1,1);
+    rect(49,2,1,5);
+    rect(45,4,5,1);
+    //R
+    rect(51,0,1,7);
+    rect(51,0,4,1);
+    rect(55,1,1,2);
+    rect(51,3,4,1);
+    rect(53,4,1,1);
+    rect(54,5,1,1);
+    rect(55,6,1,1);
+    //T
+    rect(57,0,5,1);
+    rect(59,0,1,7);
+  popMatrix();
+}
