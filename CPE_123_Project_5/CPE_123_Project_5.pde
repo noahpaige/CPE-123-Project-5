@@ -1,3 +1,15 @@
+/*THINGS TO ADD:
+* make sure ship can't move off screen
+* make sure bullets are deleted when off screen
+* add 3 waves of enemies 
+* new enemy modelsl
+* scoring (top left)
+* differently colored enemies?
+* END SCENE!
+*/
+
+
+
 ArrayList bullets;
 ArrayList enemies;
 
@@ -6,13 +18,10 @@ Player player1;
 boolean gameStart = false;
 boolean keyD = false, keyA = false;
 
-
-
 void setup()
 {
   size(1200, 700);
   startGame();
-
 }
 
 void draw()
@@ -40,6 +49,11 @@ void draw()
     drawAlien(width/2 - 88, height/2 - 64, 16);
     drawPressStart(width/2 - 124, height/2 + 80, 4);
   }
+  
+  //if (enemies.size() == 0)
+  //{
+   // playEndScene();
+  //}
 }
 
 void startGame()
@@ -94,7 +108,7 @@ void movePlayer1()
 void showLives()
 {
   for(int i=0; i<=player1.lives; i++){
-    drawPlayer(width-50*i, 20, .1);
+    drawPlayer(width-50*i, 20, 2);
   }
 }
 
