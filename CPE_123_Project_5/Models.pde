@@ -1,4 +1,28 @@
-void drawAlien(float x, float y, float s)
+void drawSmAlien(float x, float y, float s)
+{
+  pushMatrix();
+    translate(x, y);
+    scale(s);
+
+    fill(255);
+    noStroke();
+    rect(0,3,1,2);
+    rect(0,6,1,1);
+    rect(1,2,1,4);
+    rect(1,7,1,1);
+    rect(2,1,1,2);
+    rect(2,4,1,1);
+    rect(3,0,2,6);
+    rect(5,1,1,2);
+    rect(5,4,1,1);
+    rect(6,2,1,4);
+    rect(6,7,1,1);
+    rect(7,3,1,2);
+    rect(7,6,1,1);
+  popMatrix();
+}
+
+void drawMdAlien(float x, float y, float s)
 {
   pushMatrix();
     translate(x, y);
@@ -25,6 +49,37 @@ void drawAlien(float x, float y, float s)
     rect(8,2,1,5);
     rect(9,3,1,2);
     rect(10,4,1,3);
+  popMatrix();
+}
+
+void drawLgAlien(float x, float y, float s)
+{
+  pushMatrix();
+    translate(x, y);
+    scale(s);
+
+    fill(255);
+    noStroke();
+    rect(0,2,1,3);
+    rect(1,1,1,4);
+    rect(1,6,1,1);
+    rect(2,1,1,7);
+    rect(3,1,1,2);
+    rect(3,4,1,2);
+    rect(3,7,1,1);
+    rect(4,0,1,3);
+    rect(4,4,1,2);
+    rect(5,0,2,5);
+    rect(5,6,2,1);
+    rect(7,0,1,3);
+    rect(7,4,1,2);
+    rect(8,1,1,2);
+    rect(8,4,1,2);
+    rect(8,7,1,1);
+    rect(9,1,1,7);
+    rect(10,1,1,4);
+    rect(10,6,1,1);
+    rect(11,2,1,3);
   popMatrix();
 }
 

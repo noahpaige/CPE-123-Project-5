@@ -13,6 +13,7 @@ class Bullet
   void display()
   {
     rectMode(CENTER);
+    fill(255);
     rect(this.x,this.y,2,8);
     rectMode(CORNER);
   }

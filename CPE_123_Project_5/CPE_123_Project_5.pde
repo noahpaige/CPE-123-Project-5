@@ -1,20 +1,11 @@
-/*THINGS TO ADD:
-* make sure ship can't move off screen
-* make sure bullets are deleted when off screen
-* add 3 waves of enemies 
-* new enemy modelsl
-* scoring (top left)
-* differently colored enemies?
-* END SCENE!
-*/
-
-
-
 ArrayList bullets;
-ArrayList enemies;
+ArrayList sm_enemies;
+ArrayList med_enemies;
+ArrayList lg_enemies;
 
 int numCol = 8;
 Player player1;
+DebrisSys fireW1;
 boolean gameStart = false;
 boolean keyD = false, keyA = false;
 
@@ -22,61 +13,105 @@ void setup()
 {
   size(1200, 700);
   startGame();
+  fireW1 = new DebrisSys(0, new PVector(100,100));
 }
 
 void draw()
 {
   background(0); 
-  drawAlien(width/2 - 88, height/2 - 64, 16);
+  drawMdAlien(width/2 - 88, height/2 - 64, 16);
   drawPressStart(width/2 - 124, height/2 + 80, 4);
   startScreen();
   
   if(gameStart){
     background(0);
+    fireW1.run();
     player1.display();
     movePlayer1();
     player1.hitCheck();
     showLives();
-    handleEnemies();
-    handleBullets();
     
-    stroke(128);
-    line(0,height/2,width,height/2);
-    line(width/2,0,width/2,height);
+    handleSmEnemies();
+    handleBullets(); 
+    if(sm_enemies.size() == 0){
+      handleMdEnemies();
+      if(med_enemies.size() == 0){
+        handleLgEnemies();
+      }
+    }
   }
   else{
     background(0);
-    drawAlien(width/2 - 88, height/2 - 64, 16);
+    drawMdAlien(width/2 - 88, height/2 - 64, 16);
     drawPressStart(width/2 - 124, height/2 + 80, 4);
   }
-  
-  //if (enemies.size() == 0)
-  //{
-   // playEndScene();
-  //}
 }
 
 void startGame()
 {
   player1 = new Player();
   bullets = new ArrayList();
-  enemies = new ArrayList();
-  generateEnemies();
+  sm_enemies = new ArrayList();
+  med_enemies = new ArrayList();
+  lg_enemies = new ArrayList();
+  generateSmEnemies();
+  generateMdEnemies();
+  generateLgEnemies();
 }
 
-void generateEnemies()
+void generateSmEnemies()
 {
   for(int i=0; i<32; i++){
     float x = width*.1 + i%numCol*50;
     float y = 60 + int(i/numCol)*60;
-    enemies.add(new Enemy(x,y));
+    sm_enemies.add(new SmEnemy(x,y));
+  }
+}
+void generateMdEnemies()
+{
+  for(int i=0; i<32; i++){
+    float x = width*.1 + i%numCol*50;
+    float y = 60 + int(i/numCol)*60;
+    med_enemies.add(new MdEnemy(x,y));
+  }
+}
+void generateLgEnemies()
+{
+  for(int i=0; i<32; i++){
+    float x = width*.1 + i%numCol*50;
+    float y = 60 + int(i/numCol)*60;
+    lg_enemies.add(new LgEnemy(x,y));
   }
 }
 
-void handleEnemies()
+void handleSmEnemies()
 {
-  for(int i=0;i<enemies.size();i++){
-    Enemy enemy = (Enemy) enemies.get(i);
+  for(int i=0;i<sm_enemies.size();i++){
+    SmEnemy enemy = (SmEnemy) sm_enemies.get(i);
+    enemy.move();
+    enemy.display();
+    enemy.hitCheck();
+    if(random(1)>.995){
+      enemy.shoot();
+    }
+  }
+}
+void handleMdEnemies()
+{
+  for(int i=0;i<med_enemies.size();i++){
+    MdEnemy enemy = (MdEnemy) med_enemies.get(i);
+    enemy.move();
+    enemy.display();
+    enemy.hitCheck();
+    if(random(1)>.995){
+      enemy.shoot();
+    }
+  }
+}
+void handleLgEnemies()
+{
+  for(int i=0;i<lg_enemies.size();i++){
+    LgEnemy enemy = (LgEnemy) lg_enemies.get(i);
     enemy.move();
     enemy.display();
     enemy.hitCheck();
@@ -108,7 +143,7 @@ void movePlayer1()
 void showLives()
 {
   for(int i=0; i<=player1.lives; i++){
-    drawPlayer(width-50*i, 20, 2);
+    drawPlayer(width-50*i, 10, .1);
   }
 }
 
@@ -125,7 +160,7 @@ void startScreen()
 }
 
 void keyPressed()
-{
+{  
   if((key == 'd' || key == 'D') && gameStart){
     keyD = true;
   }
@@ -151,7 +186,4 @@ void keyReleased()
       keyA = false;
     }
   }
-}
-  
-      
-      
+}    

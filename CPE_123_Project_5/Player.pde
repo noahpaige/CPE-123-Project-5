@@ -12,9 +12,9 @@ class Player
   {
     this.x = width/2;
     this.y = height-20;
-    this.lives = 3;
+    this.lives = 5;
     this.timeLastShot = 0;
-    this.coolDown = 100;
+    this.coolDown = 200;
   }
   
   void display()
@@ -25,7 +25,7 @@ class Player
   void shoot()
   {
     if(millis()-timeLastShot > coolDown){
-      Bullet bullet = new Bullet(this.x,this.y-5,-6);
+      Bullet bullet = new Bullet(this.x,this.y-12,-6);
       bullets.add(bullet);
       timeLastShot = millis();
     }

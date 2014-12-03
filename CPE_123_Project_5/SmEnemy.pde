@@ -1,9 +1,9 @@
-class Enemy
+class SmEnemy
 {
   float x, y;
   float vel;
   
-  Enemy(float x, float y)
+  SmEnemy(float x, float y)
   {
     this.x = x;
     this.y = y;
@@ -12,7 +12,7 @@ class Enemy
   
   void display()
   {
-    drawAlien(this.x-16,this.y-5,3);
+    drawSmAlien(this.x-11,this.y-5,3);
   }
   
   void move()
@@ -32,7 +32,7 @@ class Enemy
   
   void shoot()
   {
-    Bullet b = new Bullet(this.x, this.y, 6);
+    Bullet b = new Bullet(this.x, this.y, 10);
     bullets.add(b);
   }
   
@@ -41,9 +41,10 @@ class Enemy
     for(int i=0; i<bullets.size(); i++){
       Bullet b = (Bullet) bullets.get(i);
       float distBetween = dist(b.x,b.y,this.x,this.y);
-      if(distBetween < 18 && b.vel < 0){
-        enemies.remove(this);
+      if(distBetween < 15 && b.vel < 0){
+        sm_enemies.remove(this);
         bullets.remove(b);
+        fireW1 = new DebrisSys(20, new PVector(this.x,this.y));
       }
     }
   }
