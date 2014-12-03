@@ -11,9 +11,14 @@ boolean keyD = false, keyA = false;
 
 void setup()
 {
+  numCol = 8;
+  gameStart = false;
+  keyD = false; 
+  keyA = false;
+
   size(1200, 700);
   startGame();
-  fireW1 = new DebrisSys(0, new PVector(100,100));
+  fireW1 = new DebrisSys(0, new PVector(0,0));
 }
 
 void draw()
@@ -35,8 +40,10 @@ void draw()
     handleBullets(); 
     if(sm_enemies.size() == 0){
       handleMdEnemies();
+      
       if(med_enemies.size() == 0){
         handleLgEnemies();
+        
       }
     }
   }
@@ -44,6 +51,12 @@ void draw()
     background(0);
     drawMdAlien(width/2 - 88, height/2 - 64, 16);
     drawPressStart(width/2 - 124, height/2 + 80, 4);
+  }
+  
+  if(player1.lives == 0){
+     background(0);
+     drawMdAlien(width/2 - 88, height/2 - 64, 16);
+     drawGameOver(width/2-100,height/2+80, 4);
   }
 }
 
@@ -142,9 +155,16 @@ void movePlayer1()
 
 void showLives()
 {
+  for(int i=0;i<=5;i++){
+    fill(0,200,0);
+    stroke(0,200,0);
+    rect(width-50*i,12,41,39);
+  }
   for(int i=0; i<=player1.lives; i++){
     drawPlayer(width-50*i, 10, .1);
+    drawLives(width-335,25,3);
   }
+  
 }
 
 void startScreen()
@@ -152,9 +172,11 @@ void startScreen()
   if (keyPressed){
     if (key == ' '){
       gameStart = true;
+      
     } 
     if (key == 'q' || key == 'Q'){
       gameStart = false;
+      setup();
     }
   }
 }

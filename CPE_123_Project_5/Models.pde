@@ -202,3 +202,101 @@ void drawPressStart(float x, float y, float s)
     rect(59,0,1,7);
   popMatrix();
 }
+
+void drawGameOver(float x, float y, float s)
+{
+  pushMatrix();
+    translate(x,y);
+    scale(s);
+    
+    fill(255);
+    noStroke();
+    //G
+    rect(0,1,1,5);
+    rect(1,0,3,1);
+    rect(1,6,3,1);
+    rect(2,3,3,1);
+    rect(4,1,1,1);
+    rect(4,3,1,3);
+    //A
+    rect(6,2,1,5);
+    rect(7,1,1,1);
+    rect(8,0,1,1);
+    rect(9,1,1,1);
+    rect(10,2,1,5);
+    rect(7,4,4,1);
+    //M
+    rect(12,0,1,7);
+    rect(13,1,1,1);
+    rect(14,2,1,2);
+    rect(15,1,1,1);
+    rect(16,0,1,7);
+    //E
+    rect(18,0,1,7);
+    rect(18,0,5,1);
+    rect(18,6,5,1);
+    rect(18,3,4,1);
+    
+    //O
+    rect(27,1,1,5);
+    rect(31,1,1,5);
+    rect(28,0,3,1);
+    rect(28,6,3,1);
+    //V
+    rect(33,0,1,5);
+    rect(37,0,1,5);
+    rect(34,5,1,1);
+    rect(35,6,1,1);
+    rect(36,5,1,1);
+    //E
+    rect(39,0,1,7);
+    rect(39,0,5,1);
+    rect(39,6,5,1);
+    rect(39,3,4,1);
+    //R
+    rect(45,0,1,7);
+    rect(45,0,4,1);
+    rect(49,1,1,2);
+    rect(45,3,4,1);
+    rect(47,4,1,1);
+    rect(48,5,1,1);
+    rect(49,6,1,1);  
+  popMatrix();
+}
+
+void drawLives(float x, float y, float s)
+{
+  pushMatrix();
+    translate(x,y);
+    scale(s);
+    fill(255);
+    noStroke();
+    
+    //L
+    rect(0,0,1,7);
+    rect(0,6,5,1);
+    //I
+    rect(6,0,3,1);
+    rect(7,0,1,7);
+    rect(6,6,3,1);
+    //V
+    rect(10,0,1,5);
+    rect(14,0,1,5);
+    rect(11,5,1,1);
+    rect(12,6,1,1);
+    rect(13,5,1,1);
+    //E
+    rect(16,0,1,7);
+    rect(16,0,5,1);
+    rect(16,6,5,1);
+    rect(16,3,4,1);
+    //S
+    rect(22,1,1,2);
+    rect(22,5,1,1);
+    rect(23,0,3,1);
+    rect(23,3,3,1);
+    rect(23,6,3,1);
+    rect(26,1,1,1);
+    rect(26,4,1,2);
+  popMatrix();
+}
