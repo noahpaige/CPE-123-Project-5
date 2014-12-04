@@ -43,6 +43,17 @@ class Player
     }
   }
   
+  void bossHitCheck()
+  {
+    for(int i=0; i<bossBullets.size(); i++){
+      bossBullet b = (bossBullet) bossBullets.get(i);
+      float distBetween = dist(this.x,this.y,b.x,b.y);
+      if(distBetween<20 && b.vel.y > 0){
+        this.die();
+        bossBullets = new ArrayList();
+      }
+    }
+  }
    void die() 
   {
     this.x = width/2;

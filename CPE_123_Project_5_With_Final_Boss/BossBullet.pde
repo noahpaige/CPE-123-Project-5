@@ -2,13 +2,12 @@
 not yet implemented.
 I plan to make the boss shoot in an arc.
 **/
-class BossBullet
+class bossBullet
 {
   float x, y;
-  float vel;
-  //color c; ADD BULLET COLOR FOR DEATH STAR
+  PVector vel;
   
-  BossBullet(float x, float y, float vel)
+  bossBullet(float x, float y, PVector vel)
   {
     this.x = x;
     this.y = y;
@@ -18,16 +17,18 @@ class BossBullet
   void display()
   {
     rectMode(CENTER);
-    fill(255);
+    fill(0,0,255);
     rect(this.x,this.y,2,8);
     rectMode(CORNER);
   }
   
   void move()
   {
-    this.y += this.vel;
-    if(this.y > height || this.y < 0){
-      bullets.remove(this);
+    this.y += this.vel.y;
+    this.x += this.vel.x;
+
+    if(this.y > height || this.y < 0 || this.x > width || this.x < 0){
+      bossBullets.remove(this);
     }
   }
 }

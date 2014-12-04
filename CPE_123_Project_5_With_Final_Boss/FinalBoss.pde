@@ -33,8 +33,15 @@ class FinalBoss
   
   void shoot()
   {
-    Bullet b = new Bullet(this.x, this.y, 10);
-    bullets.add(b);
+    float theta = PI/4;
+    float bulletX;
+    for (int i = 0; i < 10; i++)
+    {
+      bulletX =  10*cos(theta);
+    bossBullet b = new bossBullet(this.x, this.y, new PVector(bulletX,10));
+    bossBullets.add(b);
+    theta += PI/20;    
+    }
   }
   
   void hitCheck()

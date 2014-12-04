@@ -1,4 +1,5 @@
 ArrayList bullets;
+ArrayList bossBullets;
 ArrayList sm_enemies;
 ArrayList med_enemies;
 ArrayList lg_enemies;
@@ -79,9 +80,11 @@ void draw()
     player1.display();
     movePlayer1();
     player1.hitCheck();
+    player1.bossHitCheck();
     showLives();
     handleDeathStar();
     handleBullets(); 
+    handlebossBullets(); 
 
   }
 }
@@ -90,6 +93,7 @@ void startGame()
 {
   player1 = new Player();
   bullets = new ArrayList();
+  bossBullets = new ArrayList();
   sm_enemies = new ArrayList();
   med_enemies = new ArrayList();
   lg_enemies = new ArrayList();
@@ -178,7 +182,7 @@ void handleDeathStar()
     enemy.move();
     enemy.display();
     enemy.hitCheck();
-    if(random(1)>.995){
+    if(random(1)>.985){
       enemy.shoot();
     }
   }
@@ -188,6 +192,15 @@ void handleBullets()
 {
   for(int i=0; i<bullets.size(); i++){
     Bullet b = (Bullet) bullets.get(i);
+    b.move();
+    b.display();
+  }
+}
+
+void handlebossBullets()
+{
+  for(int i=0; i<bossBullets.size(); i++){
+    bossBullet b = (bossBullet) bossBullets.get(i);
     b.move();
     b.display();
   }
