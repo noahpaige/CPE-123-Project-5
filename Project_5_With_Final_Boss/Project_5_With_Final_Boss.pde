@@ -8,9 +8,10 @@ ArrayList final_boss;
 int numCol = 8;
 Player player1;
 DebrisSys fireW1;
+spaceShip ship;
 boolean gameStart = false;
-boolean keyD = false, keyA = false, skipToBoss = false;
-PImage DeathStar;
+boolean keyD = false, keyA = false, skipToBoss = false, skipToEarth = false;
+PImage DeathStar, earth;
 
 
 void setup()
@@ -25,6 +26,7 @@ void setup()
   startGame();
   fireW1 = new DebrisSys(0, new PVector(0,0),10);
   DeathStar = loadImage("8 Bit Death Star.png");
+  earth = loadImage("8 Bit Earth.png");
 }
 
 void draw()
@@ -38,6 +40,7 @@ void draw()
     background(0);
     fireW1.run();
     player1.display();
+    player1.inBounds(); 
     movePlayer1();
     player1.hitCheck();
     showLives();
@@ -56,6 +59,16 @@ void draw()
         if(lg_enemies.size() == 0)
         {
           handleDeathStar();
+          handlebossBullets();
+          player1.bossHitCheck(); 
+          if(final_boss.size() == 0)
+          {
+            background(0);
+            tint(255,255);
+            image(earth,width/2-175,height/2-175);
+            ship.drawP();
+            ship.drive();
+          } 
         }
       }
     }
@@ -81,10 +94,17 @@ void draw()
     player1.bossHitCheck();
     showLives();
     handleDeathStar();
-    handleBullets(); 
+    handleBullets();
     handlebossBullets(); 
-
   }
+  if(skipToEarth)
+  {
+    background(0);
+    image(earth,width/2-175,height/2-175);
+    ship.drawP();
+    ship.drive();
+  }
+    
 }
 
 void startGame()
@@ -96,6 +116,8 @@ void startGame()
   med_enemies = new ArrayList();
   lg_enemies = new ArrayList();
   final_boss = new ArrayList();
+  ship = new spaceShip(new PVector(0,height), new PVector(width/2, height/2));
+
   generateSmEnemies();
   generateMdEnemies();
   generateLgEnemies();
@@ -131,7 +153,7 @@ void generateDeathStar()
   for(int i=0; i<1; i++)
   {
     float x = width/2;
-    float y = 100;
+    float y = 170;
     final_boss.add(new FinalBoss(x,y));
   }
     
@@ -180,12 +202,10 @@ void handleDeathStar()
     enemy.move();
     enemy.display();
     enemy.hitCheck();
-<<<<<<< Updated upstream
-    if(random(1)>.985){
-=======
-    if(random(1)>.99){
->>>>>>> Stashed changes
-      enemy.shoot();
+    if(random(1)>.98){
+      for(int j=0; j<20; j++){
+        enemy.shoot();
+      }
     }
   }
 }
@@ -273,10 +293,17 @@ void keyPressed()
         skipToBoss = true;
         gameStart = false;
       }
+      else{
+        if(key == 'o')
+        {
+          skipToEarth = true;
+        }
+      }
     }
   }
-  }
 }
+}
+
 
 
 void keyReleased()

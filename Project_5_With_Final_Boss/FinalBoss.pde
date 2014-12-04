@@ -38,9 +38,9 @@ class FinalBoss
     for (int i = 0; i < 10; i++)
     {
       bulletX =  10*cos(theta);
-    bossBullet b = new bossBullet(this.x, this.y, new PVector(bulletX,10));
-    bossBullets.add(b);
-    theta += PI/20;    
+      bossBullet b = new bossBullet(this.x, this.y, new PVector(bulletX,10));
+      bossBullets.add(b);
+      theta += PI/20;    
     }
   }
   
@@ -57,9 +57,9 @@ class FinalBoss
       }
       if(life == 0)
       {
+        fireW1 = new DebrisSys(50, new PVector(this.x,this.y),50);
         final_boss.remove(this);
         bullets.remove(b);
-        fireW1 = new DebrisSys(50, new PVector(this.x,this.y),50);
       }
     }
   }

@@ -37,16 +37,41 @@ class Player
       Bullet b = (Bullet) bullets.get(i);
       float distBetween = dist(this.x,this.y,b.x,b.y);
       if(distBetween<20 && b.vel > 0){
-        fireW1 = new DebrisSys(20, new PVector(this.x,this.y));
+        fireW1 = new DebrisSys(20, new PVector(this.x,this.y),10);
         this.die();
         bullets = new ArrayList();
       }
     }
   }
   
+  void bossHitCheck()
+  {
+    for(int i=0; i<bossBullets.size(); i++){
+      bossBullet b = (bossBullet) bossBullets.get(i);
+      float distBetween = dist(this.x,this.y,b.x,b.y);
+      if(distBetween<20 && b.vel.y > 0){
+        fireW1 = new DebrisSys(20, new PVector(this.x,this.y),10);
+        this.die();
+        bossBullets = new ArrayList();
+        
+      }
+    }
+  }
    void die() 
   {
     this.x = width/2;
     this.lives--;
+  }
+  
+  void inBounds()
+  {
+    if (this.x > width)
+    {
+    this.x = width;
+    }
+    else if (this.x < 0)
+    {
+    this.x = 0;
+    }
   }
 } 
