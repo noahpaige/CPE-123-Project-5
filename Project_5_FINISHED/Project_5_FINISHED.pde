@@ -6,6 +6,8 @@ ArrayList lg_enemies;
 ArrayList final_boss;
 
 int numCol = 8;
+int timeDead = 0;
+int delay = 1000;
 Player player1;
 DebrisSys fireW1;
 spaceShip ship;
@@ -44,7 +46,6 @@ void draw()
     movePlayer1();
     player1.hitCheck();
     showLives();
-
     handleSmEnemies();
     handleBullets(); 
 
@@ -60,15 +61,7 @@ void draw()
         {
           handleDeathStar();
           handlebossBullets();
-          player1.bossHitCheck(); 
-          if (final_boss.size() == 0)
-          {
-            background(0);
-            tint(255, 255);
-            image(earth, width/2-175, height/2-175);
-            ship.drawP();
-            ship.drive();
-          }
+          player1.bossHitCheck();
         }
       }
     }
@@ -92,6 +85,16 @@ void draw()
     handlebossBullets();
   }
 
+  if (final_boss.size() == 0 && fireW1.dead())
+  {
+    
+    background(0);
+    tint(255, 255);
+    image(earth, width/2-175, height/2-175);
+    ship.drawP();
+    ship.drive();
+  }
+
   if (player1.lives == 0) {
     background(0);
     bullets = new ArrayList();
@@ -103,6 +106,7 @@ void draw()
   if (skipToEarth)
   {
     background(0);
+    tint(255, 255);
     image(earth, width/2-175, height/2-175);
     ship.drawP();
     ship.drive();
@@ -203,7 +207,7 @@ void handleDeathStar()
     enemy.move();
     enemy.display();
     enemy.hitCheck();
-    if (random(1)>.98) {
+    if (random(1)>.987) {
       for (int j=0; j<20; j++) {
         enemy.shoot();
       }
@@ -311,5 +315,4 @@ void keyReleased()
       keyA = false;
     }
   }
-}    
-
+}
